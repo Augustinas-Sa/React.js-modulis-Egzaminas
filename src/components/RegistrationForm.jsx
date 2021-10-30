@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import Form from './Form';
+import Modal from './Modal';
 import {
   StyledLogo,
   StyledLogoImgSection,
@@ -19,6 +20,14 @@ import {
 import { FaGoogle, FaFacebook } from 'react-icons/fa';
 
 const RegistrationForm = () => {
+  // hooks
+  // - state
+  const [openFormModal, setOpenFormModal] = useState(false);
+
+  // custom functions
+  const openModal = () => setOpenFormModal(true);
+  const closeModal = () => setOpenFormModal(false);
+
   return (
     <StyledMain>
       <StyledLogoImgSection>
@@ -47,6 +56,7 @@ const RegistrationForm = () => {
           <StyledA href='close'>Log in</StyledA>
           <StyledButtonDiv>
             <Button
+              action={openModal}
               icon={
                 <StyledGoogleIcon>
                   <FaGoogle />
@@ -56,6 +66,7 @@ const RegistrationForm = () => {
               primary
             />
             <Button
+              action={openModal}
               icon={
                 <StyledFacebookIcon>
                   <FaFacebook />
@@ -69,6 +80,11 @@ const RegistrationForm = () => {
         </StyledTextButtonsDiv>
         <Form />
       </StyledFormSection>
+      {openFormModal && (
+        <Modal onClose={closeModal}>
+          <RegistrationForm />
+        </Modal>
+      )}
     </StyledMain>
   );
 };
