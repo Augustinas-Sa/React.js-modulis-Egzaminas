@@ -53,7 +53,10 @@ const Form = () => {
           color='#afafaf'
           size='1em'
         />
-        <FormInput type='password' placeholder='.......' />
+        <FormInput
+          type='password'
+          placeholder='&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;'
+        />
       </StyledFormDiv>
 
       <StyledSubmitDiv>
